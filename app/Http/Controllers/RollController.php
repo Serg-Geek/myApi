@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 
 
-class Rollcontroller extends Controller
+class RollController extends Controller
 {
    public function index()
    {
