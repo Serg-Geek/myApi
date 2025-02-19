@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
-    $product->updateStatus($request->'status')
+        $product->updateStatus($request->input('status'))
             ->updateStock((int) $request->input('stock'))
             ->updatePrice((float) $request->input('price'));
 

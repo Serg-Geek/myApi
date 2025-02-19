@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Http;
 
 class Product extends Model
 {
@@ -21,9 +22,21 @@ class Product extends Model
      * @param  array  $data
      * @return \App\Models\Product
      */
+    
     public static function createProduct(array $data)
     {
-        return self::create($data);
+    $baseUrl = 'https://api.unsplash.com/photos/random';
+    $key = 'EV19Pz0Td-YpIRDO1Te72KRXyCHxgsc0oOTj5-_pmkg';
+    $response = Http::withHeaders([
+            'Authorization' => 'Client-ID ' . $key,
+        ])->get($baseUrl, ['query' => $data['name']]);
+
+        
+        $data['image'] = $response->json()['urls']['regular'];
+        
+    
+
+    return self::create($data);
     }
 
     /*

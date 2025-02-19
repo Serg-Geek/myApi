@@ -11,6 +11,10 @@ use App\Http\Controllers\OrderController;
 // 
 
 Route::get('/roll',[RollController::class, 'index'] );
+// http://localhost:8000/api/external
+Route::get('/external', [RollController::class, 'external']);
+
+
 Route::get('/status', [StatusController::class, 'index']);
 Route::get('/store', [StoreController::class, 'show']);
 // !@http://localhost:8000/api/users
